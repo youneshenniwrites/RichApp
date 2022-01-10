@@ -10,8 +10,8 @@ export interface Search {
 }
 
 const initialState = {
-  error: null,
   loading: false,
+  error: null,
   data: [],
 };
 

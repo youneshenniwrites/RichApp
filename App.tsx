@@ -12,7 +12,7 @@ const App = () => {
     <Provider store={store}>
       <View style={styles.container}>
         <StatusBar style="auto" />
-        <Text>Search for a library</Text>
+        <Text style={styles.title}>Library Finder</Text>
         <ResultsList />
       </View>
     </Provider>
@@ -24,8 +24,11 @@ export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ff72',
+    backgroundColor: '#808080',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  title: {
+    fontSize: 40,
   },
 });
