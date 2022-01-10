@@ -1,3 +1,5 @@
+import { combineReducers } from 'redux';
+
 import { Action } from './actions';
 import { ActionType } from './actionTypes';
 
@@ -13,7 +15,7 @@ const initialState = {
   data: [],
 };
 
-export const searchReducer = (
+const searchReducer = (
   state: Search = initialState,
   action: Action
 ): Search => {
@@ -28,3 +30,9 @@ export const searchReducer = (
       return state;
   }
 };
+
+const reducers = combineReducers({
+  searchResults: searchReducer,
+});
+
+export default reducers;

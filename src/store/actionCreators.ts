@@ -6,7 +6,7 @@ import { ActionType } from './actionTypes';
 
 const BASE_URL = 'https://registry.npmjs.org/-/v1/search';
 
-const searchLibraries = (term: string) => {
+export const searchLibraries = (term: string) => {
   return async (dispatch: Dispatch<Action>) => {
     dispatch({
       type: ActionType.SEARCH,
