@@ -1,18 +1,30 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { TextInput, Button, StyleSheet } from 'react-native';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { searchLibraries } from '../store';
 
 const ResultsList = (): JSX.Element => {
   const [term, setTerm] = useState('');
+  const dispatch = useDispatch();
+  const { data, error, loading } = useSelector(
+    (state: any) => state.searchResults
+  );
+
+  const handleSubmit = () => {
+    return dispatch(searchLibraries(term));
+  };
+
   return (
-    <View>
+    <>
       <TextInput
         style={styles.textInputStyle}
         onChangeText={setTerm}
         value={term}
         placeholder="Search a library"
       />
-      <Button title="Search" onPress={() => {}} color={'#fff'} />
-    </View>
+      <Button title="Search" onPress={handleSubmit} color={'white'} />
+    </>
   );
 };
 

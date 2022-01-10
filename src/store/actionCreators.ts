@@ -14,7 +14,7 @@ export const searchLibraries = (term: string) => {
 
     try {
       const { data } = await axios.get(BASE_URL, {
-        params: { term },
+        params: { text: term },
       });
 
       const names = data.objects.map((result: any) => result.package.name);
