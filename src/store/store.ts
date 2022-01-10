@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import { searchReducer } from './Search/reducers';
+import { searchReducer } from './reducers';
 
 const store = createStore(searchReducer);
 
