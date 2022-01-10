@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Text, TextInput, Button, StyleSheet } from 'react-native';
 
-import { v4 as uuidv4 } from 'uuid';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { RooState, searchLibraries } from '../store';
 
@@ -29,9 +27,7 @@ const ResultsList = (): JSX.Element => {
       <Button title="Search" onPress={handleSubmit} color={'white'} />
       {error && <Text>{error}</Text>}
       {loading && <Text>Loading ...</Text>}
-      {!error &&
-        !loading &&
-        data.map((name) => <Text key={uuidv4()}>{name}</Text>)}
+      {!error && !loading && data.map((name) => <Text key={name}>{name}</Text>)}
     </>
   );
 };
