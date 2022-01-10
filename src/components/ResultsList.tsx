@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { TextInput, Button, StyleSheet } from 'react-native';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { searchLibraries } from '../store';
+import { RooState, searchLibraries } from '../store';
 
 const ResultsList = (): JSX.Element => {
   const [term, setTerm] = useState('');
   const dispatch = useDispatch();
   const { data, error, loading } = useSelector(
-    (state: any) => state.searchResults
+    (state: RooState) => state.searchResults
   );
 
   const handleSubmit = () => {

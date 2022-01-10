@@ -36,3 +36,5 @@ const reducers = combineReducers({
 });
 
 export default reducers;
+
+export type RooState = ReturnType<typeof reducers>;
