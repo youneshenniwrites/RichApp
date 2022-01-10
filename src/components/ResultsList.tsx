@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { TextInput, Button, StyleSheet } from 'react-native';
+import { Text, TextInput, Button, StyleSheet } from 'react-native';
+
+import { v4 as uuidv4 } from 'uuid';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RooState, searchLibraries } from '../store';
@@ -22,8 +24,14 @@ const ResultsList = (): JSX.Element => {
         onChangeText={setTerm}
         value={term}
         placeholder="Search a library"
+        autoCapitalize="none"
       />
       <Button title="Search" onPress={handleSubmit} color={'white'} />
+      {error && <Text>{error}</Text>}
+      {loading && <Text>Loading ...</Text>}
+      {!error &&
+        !loading &&
+        data.map((name) => <Text key={uuidv4()}>{name}</Text>)}
     </>
   );
 };
