@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
-import { Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 
+import { Searchbar, Button } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { RooState, searchLibraries } from '../store';
+import { Center, Divider, Label, Padder } from '../styles';
+import Loader from './Loader';
+
+// TODO: make keyboard appear
 
 const ResultsList = (): JSX.Element => {
   const [term, setTerm] = useState('');
+
   const dispatch = useDispatch();
+
   const { data, error, loading } = useSelector(
     (state: RooState) => state.searchResults
   );
@@ -17,29 +25,35 @@ const ResultsList = (): JSX.Element => {
 
   return (
     <>
-      <TextInput
-        style={styles.textInputStyle}
-        onChangeText={setTerm}
-        value={term}
-        placeholder="Search a library"
-        autoCapitalize="none"
-      />
-      <Button title="Search" onPress={handleSubmit} color={'white'} />
-      {error && <Text>{error}</Text>}
-      {loading && <Text>Loading ...</Text>}
-      {!error && !loading && data.map((name) => <Text key={name}>{name}</Text>)}
+      <Padder>
+        <Searchbar
+          placeholder="Search a package"
+          onChangeText={setTerm}
+          value={term}
+          autoCapitalize="none"
+          autoComplete={false}
+          autoCorrect={false}
+        />
+      </Padder>
+      <Padder>
+        <Button mode="contained" onPress={handleSubmit}>
+          Search
+        </Button>
+      </Padder>
+      <Center>
+        {error && <Label>{error}</Label>}
+        {loading && <Loader />}
+        {!error &&
+          !loading &&
+          data.map((name) => (
+            <View key={name}>
+              <Label>{name}</Label>
+              <Divider />
+            </View>
+          ))}
+      </Center>
     </>
   );
 };
 
 export default ResultsList;
-
-const styles = StyleSheet.create({
-  textInputStyle: {
-    backgroundColor: '#fff',
-    height: 50,
-    width: 200,
-    margin: 30,
-    paddingLeft: 10,
-  },
-});

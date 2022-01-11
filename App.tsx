@@ -1,35 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
 import { StatusBar } from 'expo-status-bar';
-
 import { Provider } from 'react-redux';
-import { store } from './src/store';
 
+import { store } from './src/store';
+import { Container, Title } from './src/styles';
 import ResultsList from './src/components/ResultsList';
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <View style={styles.container}>
+    <Container>
+      <Provider store={store}>
         <StatusBar style="auto" />
-        <Text style={styles.title}>Library Finder</Text>
+        <Title>NPM Package Finder</Title>
         <ResultsList />
-      </View>
-    </Provider>
+      </Provider>
+    </Container>
   );
 };
 
 export default App;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#808080',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 40,
-  },
-});
