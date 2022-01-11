@@ -15,9 +15,10 @@ import {
 const Tab = createBottomTabNavigator();
 
 export const RootNavigator = () => {
+  const { Navigator, Screen } = Tab;
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             let iconName: any;
@@ -32,9 +33,9 @@ export const RootNavigator = () => {
           tabBarInactiveTintColor: 'gray',
         })}
       >
-        <Tab.Screen name={SEARCH_SCREEN_NAME} component={PackagesScreen} />
-        <Tab.Screen name={FOO_SCREEN_NAME} component={FoobarScreen} />
-      </Tab.Navigator>
+        <Screen name={SEARCH_SCREEN_NAME} component={PackagesScreen} />
+        <Screen name={FOO_SCREEN_NAME} component={FoobarScreen} />
+      </Navigator>
     </NavigationContainer>
   );
 };

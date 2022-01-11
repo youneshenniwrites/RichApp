@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { FlatList } from 'react-native';
 
 import { Searchbar, Button } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,8 +8,6 @@ import { RooState, searchLibraries } from '../store';
 import { Center, Divider, Label, Padder } from '../styles';
 import { Loader } from './Loader';
 import { SEARCH_BUTTON_TEXT, SEARCH_PLACEHOLDER } from '../constants';
-
-// TODO: turn list into a scroll view
 
 export const ResultsList = (): JSX.Element => {
   const [term, setTerm] = useState('');
@@ -45,14 +43,19 @@ export const ResultsList = (): JSX.Element => {
       <Center>
         {error && <Label>{error}</Label>}
         {loading && <Loader />}
-        {!error &&
-          !loading &&
-          data.map((name) => (
-            <View key={name}>
-              <Label>{name}</Label>
-              <Divider />
-            </View>
-          ))}
+        {!error && !loading && (
+          <FlatList
+            data={data}
+            keyExtractor={(item) => item}
+            contentContainerStyle={{ alignItems: 'center' }}
+            renderItem={({ item }) => (
+              <>
+                <Label>{item}</Label>
+                <Divider />
+              </>
+            )}
+          />
+        )}
       </Center>
     </>
   );
