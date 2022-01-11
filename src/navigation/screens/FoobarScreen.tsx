@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Label } from '../styles';
+import { Container, Label } from '../../styles';
 
 export const FoobarScreen = () => {
   return (
