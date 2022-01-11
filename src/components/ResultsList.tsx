@@ -6,11 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { RooState, searchLibraries } from '../store';
 import { Center, Divider, Label, Padder } from '../styles';
-import Loader from './Loader';
+import { Loader } from './Loader';
 
-// TODO: make keyboard appear
-
-const ResultsList = (): JSX.Element => {
+export const ResultsList = (): JSX.Element => {
   const [term, setTerm] = useState('');
 
   const dispatch = useDispatch();
@@ -33,6 +31,7 @@ const ResultsList = (): JSX.Element => {
           autoCapitalize="none"
           autoComplete={false}
           autoCorrect={false}
+          onEndEditing={handleSubmit}
         />
       </Padder>
       <Padder>
@@ -55,5 +54,3 @@ const ResultsList = (): JSX.Element => {
     </>
   );
 };
-
-export default ResultsList;

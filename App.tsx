@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 
 import { store } from './src/store';
 import { Container, Title } from './src/styles';
-import ResultsList from './src/components/ResultsList';
+import { ResultsList } from './src/components';
 
 const App = () => {
   return (
