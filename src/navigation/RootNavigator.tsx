@@ -31,6 +31,7 @@ export const RootNavigator = () => {
           },
           tabBarActiveTintColor: 'tomato',
           tabBarInactiveTintColor: 'gray',
+          headerShown: false,
         })}
       >
         <Screen name={SEARCH_SCREEN_NAME} component={PackagesScreen} />
