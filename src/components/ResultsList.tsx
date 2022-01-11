@@ -3,6 +3,7 @@ import { FlatList } from 'react-native';
 
 import { Searchbar, Button } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
+import uuid from 'react-native-uuid';
 
 import { RooState, searchLibraries } from '../store';
 import { Center, Divider, Label, Padder } from '../styles';
@@ -18,9 +19,7 @@ export const ResultsList = (): JSX.Element => {
     (state: RooState) => state.searchResults
   );
 
-  const handleSubmit = () => {
-    return dispatch(searchLibraries(term));
-  };
+  const handleSubmit = () => dispatch(searchLibraries(term));
 
   return (
     <>
@@ -46,7 +45,7 @@ export const ResultsList = (): JSX.Element => {
         {!error && !loading && (
           <FlatList
             data={data}
-            keyExtractor={(item) => item}
+            keyExtractor={() => uuid.v4().toString()}
             contentContainerStyle={{ alignItems: 'center' }}
             renderItem={({ item }) => (
               <>
