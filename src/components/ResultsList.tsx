@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RooState, searchLibraries } from '../store';
 import { Center, Divider, Label, Padder } from '../styles';
 import { Loader } from './Loader';
+import { SEARCH_BUTTON_TEXT, SEARCH_PLACEHOLDER } from '../constants';
+
+// TODO: turn list into a scroll view
 
 export const ResultsList = (): JSX.Element => {
   const [term, setTerm] = useState('');
@@ -25,7 +28,7 @@ export const ResultsList = (): JSX.Element => {
     <>
       <Padder>
         <Searchbar
-          placeholder="Search a package"
+          placeholder={SEARCH_PLACEHOLDER}
           onChangeText={setTerm}
           value={term}
           autoCapitalize="none"
@@ -36,7 +39,7 @@ export const ResultsList = (): JSX.Element => {
       </Padder>
       <Padder>
         <Button mode="contained" onPress={handleSubmit}>
-          Search
+          {SEARCH_BUTTON_TEXT}
         </Button>
       </Padder>
       <Center>

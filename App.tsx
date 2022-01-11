@@ -1,21 +1,29 @@
 import React from 'react';
 
 import { StatusBar } from 'expo-status-bar';
-import { Provider } from 'react-redux';
+import { Provider as Redux } from 'react-redux';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { store } from './src/store';
-import { Container, Title } from './src/styles';
-import { ResultsList } from './src/components';
+import { FoobarScreen, PackagesScreen } from './src/screens';
+import { FOO_SCREEN_NAME, SEARCH_SCREEN_NAME } from './src/constants';
+
+const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
-    <Container>
-      <Provider store={store}>
-        <StatusBar style="auto" />
-        <Title>NPM Package Finder</Title>
-        <ResultsList />
-      </Provider>
-    </Container>
+    <>
+      <StatusBar style="auto" />
+      <Redux store={store}>
+        <NavigationContainer>
+          <Tab.Navigator>
+            <Tab.Screen name={SEARCH_SCREEN_NAME} component={PackagesScreen} />
+            <Tab.Screen name={FOO_SCREEN_NAME} component={FoobarScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </Redux>
+    </>
   );
 };
 
