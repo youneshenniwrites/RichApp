@@ -3,8 +3,7 @@ import axios from 'axios';
 
 import { Action } from './actions';
 import { ActionType } from './actionTypes';
-
-const BASE_URL = 'https://registry.npmjs.org/-/v1/search';
+import { BASE_URL } from '../constants';
 
 export const searchLibraries = (term: string) => {
   return async (dispatch: Dispatch<Action>) => {
