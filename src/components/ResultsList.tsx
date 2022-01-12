@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import uuid from 'react-native-uuid';
 
 import { RooState, searchLibraries } from '../store';
-import { Center, Container, Divider, Label, Padder } from '../styles';
+import { Container, Divider, Label, Padder } from '../styles';
 import { Loader } from './Loader';
 import { SEARCH_BUTTON_TEXT, SEARCH_PLACEHOLDER } from '../constants';
 
