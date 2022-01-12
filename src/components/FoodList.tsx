@@ -1,30 +1,36 @@
 import React from 'react';
 
-import { Footnote, Header, Label } from '../styles';
-import { Canvas } from '../styles/Canvas';
+import { Button, Card, Paragraph } from 'react-native-paper';
+
+import { Padder } from '../styles';
+import { addBritishPound } from '../utils';
 
 interface Food {
   id: number;
   name: string;
   type: string;
   description: string;
+  picture: string;
   price: number;
 }
-
 interface Props {
   menuItem: Food;
 }
+// TODO: add proper food images
 
-// TODO use Card from paper for styling
 export const FoodList = ({ menuItem }: Props) => {
   return (
-    <>
-      <Canvas>
-        <Header>{menuItem.name}</Header>
-        <Label>{menuItem.type}</Label>
-      </Canvas>
-      <Label>{menuItem.description}</Label>
-      <Footnote>{menuItem.price}</Footnote>
-    </>
+    <Padder>
+      <Card>
+        <Card.Title title={menuItem.name} subtitle={menuItem.type} />
+        <Card.Content>
+          <Paragraph>{menuItem.description}</Paragraph>
+        </Card.Content>
+        <Card.Cover source={{ uri: menuItem.picture }} />
+        <Card.Actions>
+          <Button>{addBritishPound(menuItem.price)}</Button>
+        </Card.Actions>
+      </Card>
+    </Padder>
   );
 };
