@@ -2,29 +2,31 @@ import React from 'react';
 import { FlatList as FoodList } from 'react-native';
 
 import uuid from 'react-native-uuid';
+import { Chip } from 'react-native-paper';
 
 import { MenuItem } from '../../components';
 import { Container, Padder, Stretcher, Title } from '../../styles';
 import { menuData as menu } from '../../mock';
-import { Button } from 'react-native-paper';
 import { FOOD_SCREEN_TITLE } from '../../constants';
 
 export const FoodScreen = () => {
   // TODO Add filter component [pizza, burger, soup, sandwich]
+
+  const filterFood = () => {};
 
   return (
     <Container>
       <Padder>
         <Title>{FOOD_SCREEN_TITLE}</Title>
       </Padder>
-
-      <Stretcher>
-        <Button>Pizza</Button>
-        <Button>Burger</Button>
-        <Button>Soup</Button>
-        <Button>Sandwich</Button>
-      </Stretcher>
-
+      <Padder theme={'small'}>
+        <Stretcher theme={'horizontal'}>
+          <Chip onPress={filterFood}>Pizza</Chip>
+          <Chip>Burger</Chip>
+          <Chip>Soup</Chip>
+          <Chip>Sandwich</Chip>
+        </Stretcher>
+      </Padder>
       <FoodList
         data={menu}
         keyExtractor={() => uuid.v4().toString()}

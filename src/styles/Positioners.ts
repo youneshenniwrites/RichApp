@@ -6,7 +6,7 @@ export const Centerer = styled.View`
 `;
 
 export const Stretcher = styled.View`
-  flex-direction: row;
+  flex-direction: ${({ theme }) => (theme === 'horizontal' ? 'row' : 'column')};
   justify-content: space-between;
 `;
 

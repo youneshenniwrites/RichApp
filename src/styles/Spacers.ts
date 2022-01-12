@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Padder = styled.View`
-  padding: 16px;
+  padding: ${({ theme }) => (theme === 'small' ? 8 : 16)}px;
 `;
 
 export const Divider = styled.View`

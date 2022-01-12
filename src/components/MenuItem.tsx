@@ -14,8 +14,6 @@ interface MenuItemProps {
   price: number;
 }
 
-// TODO: add proper food images
-
 export const MenuItem = ({
   name,
   type,
