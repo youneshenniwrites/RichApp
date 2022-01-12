@@ -1,10 +1,10 @@
 import React from 'react';
 import { Container, Label } from '../../styles';
 
-export const FoobarScreen = () => {
+export const FoodScreen = () => {
   return (
     <Container>
-      <Label>Screen</Label>
+      <Label>Search food nearby</Label>
     </Container>
   );
 };

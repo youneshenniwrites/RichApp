@@ -4,12 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
-import { FoobarScreen, PackagesScreen } from './screens';
+import { FoodScreen, PackagesScreen } from './screens';
 import {
-  FOO_SCREEN_NAME,
-  SEARCH_SCREEN_NAME,
-  ICON_NAME_ONE,
-  ICON_NAME_TWO,
+  NPM_SCREEN_NAME,
+  FOOD_SCREEN_NAME,
+  ICON_ROUTE_ONE,
+  ICON_ROUTE_TWO,
 } from '../constants';
 
 const Tab = createBottomTabNavigator();
@@ -22,10 +22,10 @@ export const RootNavigator = () => {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ color, size }) => {
             let iconName: any;
-            if (route.name === SEARCH_SCREEN_NAME) {
-              iconName = ICON_NAME_ONE;
-            } else if (route.name === FOO_SCREEN_NAME) {
-              iconName = ICON_NAME_TWO;
+            if (route.name === NPM_SCREEN_NAME) {
+              iconName = ICON_ROUTE_ONE;
+            } else if (route.name === FOOD_SCREEN_NAME) {
+              iconName = ICON_ROUTE_TWO;
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
@@ -34,8 +34,8 @@ export const RootNavigator = () => {
           headerShown: false,
         })}
       >
-        <Screen name={SEARCH_SCREEN_NAME} component={PackagesScreen} />
-        <Screen name={FOO_SCREEN_NAME} component={FoobarScreen} />
+        <Screen name={NPM_SCREEN_NAME} component={PackagesScreen} />
+        <Screen name={FOOD_SCREEN_NAME} component={FoodScreen} />
       </Navigator>
     </NavigationContainer>
   );

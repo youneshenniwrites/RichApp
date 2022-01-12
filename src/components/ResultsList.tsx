@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { FlatList } from 'react-native';
 
 import { Searchbar, Button } from 'react-native-paper';
@@ -19,7 +19,6 @@ export const ResultsList = (): JSX.Element => {
     (state: RooState) => state.searchResults
   );
 
-  // TODO cache the results of search to avoid unecessary network requests
   const handleSubmit = () => {
     setTerm('');
     return term && dispatch(searchLibraries(term));

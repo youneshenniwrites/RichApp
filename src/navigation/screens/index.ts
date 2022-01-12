@@ -1,2 +1,2 @@
-export * from './FoobarScreen';
+export * from './FoodScreen';
 export * from './PackagesScreen';
