@@ -8,7 +8,7 @@ import uuid from 'react-native-uuid';
 import { RooState, searchLibraries } from '../store';
 import { Container, Divider, Label, Padder } from '../styles';
 import { Loader } from './Loader';
-import { SEARCH_BUTTON_TEXT, SEARCH_PLACEHOLDER } from '../constants';
+import { SEARCH_BUTTON_TEXT, NPM_SEARCH_PLACEHOLDER } from '../constants';
 
 export const ResultsList = (): JSX.Element => {
   const [term, setTerm] = useState('');
@@ -28,7 +28,7 @@ export const ResultsList = (): JSX.Element => {
     <Container>
       <Padder>
         <Searchbar
-          placeholder={SEARCH_PLACEHOLDER}
+          placeholder={NPM_SEARCH_PLACEHOLDER}
           onChangeText={setTerm}
           value={term}
           autoCapitalize="none"

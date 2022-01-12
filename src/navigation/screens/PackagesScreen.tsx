@@ -1,13 +1,16 @@
 import React from 'react';
 
 import { ResultsList } from '../../components';
-import { RESULTS_LIST_TITLE } from '../../constants';
-import { Container, Title } from '../../styles';
+import { NPM_SCREEN_TITLE } from '../../constants';
+import { Container, Padder, Title } from '../../styles';
 
 export const PackagesScreen = () => {
   return (
     <Container>
-      <Title>{RESULTS_LIST_TITLE}</Title>
+      <Padder>
+        <Title>{NPM_SCREEN_TITLE}</Title>
+      </Padder>
+
       <ResultsList />
     </Container>
   );

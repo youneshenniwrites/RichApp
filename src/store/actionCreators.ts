@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { Action } from './actions';
 import { ActionType } from './actionTypes';
-import { BASE_URL } from '../constants';
+import { NPM_API_URL } from '../constants';
 
 export const searchLibraries = (term: string) => {
   return async (dispatch: Dispatch<Action>) => {
@@ -12,7 +12,7 @@ export const searchLibraries = (term: string) => {
     });
 
     try {
-      const { data } = await axios.get(BASE_URL, {
+      const { data } = await axios.get(NPM_API_URL, {
         params: { text: term },
       });
 
