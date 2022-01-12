@@ -5,7 +5,7 @@ import { Button, Card, Paragraph } from 'react-native-paper';
 import { Padder } from '../styles';
 import { addBritishPound } from '../utils';
 
-interface Food {
+interface MenuItemProps {
   id: number;
   name: string;
   type: string;
@@ -13,22 +13,26 @@ interface Food {
   picture: string;
   price: number;
 }
-interface Props {
-  menuItem: Food;
-}
+
 // TODO: add proper food images
 
-export const FoodList = ({ menuItem }: Props) => {
+export const MenuItem = ({
+  name,
+  type,
+  description,
+  picture,
+  price,
+}: MenuItemProps) => {
   return (
     <Padder>
       <Card>
-        <Card.Title title={menuItem.name} subtitle={menuItem.type} />
+        <Card.Title title={name} subtitle={type} />
         <Card.Content>
-          <Paragraph>{menuItem.description}</Paragraph>
+          <Paragraph>{description}</Paragraph>
         </Card.Content>
-        <Card.Cover source={{ uri: menuItem.picture }} />
+        <Card.Cover source={{ uri: picture }} />
         <Card.Actions>
-          <Button>{addBritishPound(menuItem.price)}</Button>
+          <Button>{addBritishPound(price)}</Button>
         </Card.Actions>
       </Card>
     </Padder>

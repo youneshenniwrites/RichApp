@@ -1,18 +1,32 @@
 import React from 'react';
+import { FlatList as FoodList } from 'react-native';
 
-import { FoodList } from '../../components';
+import uuid from 'react-native-uuid';
+
+import { MenuItem } from '../../components';
 import { Container, Title } from '../../styles';
-import { menuData } from '../../mock';
+import { menuData as menu } from '../../mock';
 
 export const FoodScreen = () => {
-  // TODO add scroll view
   // TODO Add filter
+
   return (
     <Container>
       <Title>Welcome to FakeFood</Title>
-      {menuData.map((menuItem) => (
-        <FoodList key={menuItem.id} menuItem={menuItem} />
-      ))}
+      <FoodList
+        data={menu}
+        keyExtractor={() => uuid.v4().toString()}
+        renderItem={({ item }) => (
+          <MenuItem
+            id={item.id}
+            name={item.name}
+            description={item.description}
+            type={item.type}
+            picture={item.picture}
+            price={item.price}
+          />
+        )}
+      />
     </Container>
   );
 };

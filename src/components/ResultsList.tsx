@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import uuid from 'react-native-uuid';
 
 import { RooState, searchLibraries } from '../store';
-import { Center, Divider, Label, Padder } from '../styles';
+import { Center, Container, Divider, Label, Padder } from '../styles';
 import { Loader } from './Loader';
 import { SEARCH_BUTTON_TEXT, SEARCH_PLACEHOLDER } from '../constants';
 
@@ -25,7 +25,7 @@ export const ResultsList = (): JSX.Element => {
   };
 
   return (
-    <>
+    <Container>
       <Padder>
         <Searchbar
           placeholder={SEARCH_PLACEHOLDER}
@@ -42,23 +42,22 @@ export const ResultsList = (): JSX.Element => {
           {SEARCH_BUTTON_TEXT}
         </Button>
       </Padder>
-      <Center>
-        {error && <Label>{error}</Label>}
-        {loading && <Loader />}
-        {!error && !loading && (
-          <FlatList
-            data={data}
-            keyExtractor={() => uuid.v4().toString()}
-            contentContainerStyle={{ alignItems: 'center' }}
-            renderItem={({ item }) => (
-              <>
-                <Label>{item}</Label>
-                <Divider />
-              </>
-            )}
-          />
-        )}
-      </Center>
-    </>
+
+      {error && <Label>{error}</Label>}
+      {loading && <Loader />}
+      {!error && !loading && (
+        <FlatList
+          data={data}
+          keyExtractor={() => uuid.v4().toString()}
+          contentContainerStyle={{ alignItems: 'center' }}
+          renderItem={({ item }) => (
+            <>
+              <Label>{item}</Label>
+              <Divider />
+            </>
+          )}
+        />
+      )}
+    </Container>
   );
 };
