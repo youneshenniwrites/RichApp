@@ -1,10 +1,17 @@
 import React from 'react';
-import { Container, Label } from '../../styles';
+
+import { FoodList } from '../../components';
+import { Container, Title } from '../../styles';
+import { menu } from '../../utils';
 
 export const FoodScreen = () => {
+  // TODO add scroll view
   return (
     <Container>
-      <Label>Search food nearby</Label>
+      <Title>Welcome to FakeFood</Title>
+      {menu.map((menuItem) => (
+        <FoodList key={menuItem.id} menuItem={menuItem} />
+      ))}
     </Container>
   );
 };
