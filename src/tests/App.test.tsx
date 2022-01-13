@@ -1,17 +1,19 @@
 import React from 'react';
 
 import { render } from '@testing-library/react-native';
-import { Provider } from 'react-redux';
+import { Provider as Redux } from 'react-redux';
 
 import { store } from '../store';
 import { ResultsList } from '../components';
 
-describe('Testing RichApp', () => {
+// TODO: fix the <App /> bug
+
+describe('Testing <ResultsList />', () => {
   it('renders the component correctly', () => {
-    // render(
-    //   <Provider store={store}>
-    //     <ResultsList />
-    //   </Provider>
-    // );
+    render(
+      <Redux store={store}>
+        <ResultsList />
+      </Redux>
+    );
   });
 });
