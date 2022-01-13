@@ -10,7 +10,6 @@ export const PackagesScreen = () => {
       <Padder>
         <Title>{NPM_SCREEN_TITLE}</Title>
       </Padder>
-
       <ResultsList />
     </Container>
   );

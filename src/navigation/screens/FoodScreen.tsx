@@ -7,7 +7,13 @@ import { Chip } from 'react-native-paper';
 import { MenuItem } from '../../components';
 import { Container, Padder, Stretcher, Title } from '../../styles';
 import { menuData as menu } from '../../mock';
-import { FOOD_SCREEN_TITLE } from '../../constants';
+import {
+  BURGER_BUTTON_TEXT,
+  FOOD_SCREEN_TITLE,
+  PIZZA_BUTTON_TEXT,
+  SANDWICH_BUTTON_TEXT,
+  SOUP_BUTTON_TEXT,
+} from '../../constants';
 
 export const FoodScreen = () => {
   const [foodList, setFoodList] = useState(menu);
@@ -27,10 +33,18 @@ export const FoodScreen = () => {
       <Padder theme={'small'}>
         <Stretcher theme={'horizontal'}>
           <Chip onPress={() => filterFoodByType('')}>All</Chip>
-          <Chip onPress={() => filterFoodByType('Pizza')}>Pizza</Chip>
-          <Chip onPress={() => filterFoodByType('Burger')}>Burger</Chip>
-          <Chip onPress={() => filterFoodByType('Soup')}>Soup</Chip>
-          <Chip onPress={() => filterFoodByType('Sandwich')}>Sandwich</Chip>
+          <Chip onPress={() => filterFoodByType(PIZZA_BUTTON_TEXT)}>
+            {PIZZA_BUTTON_TEXT}
+          </Chip>
+          <Chip onPress={() => filterFoodByType(BURGER_BUTTON_TEXT)}>
+            {BURGER_BUTTON_TEXT}
+          </Chip>
+          <Chip onPress={() => filterFoodByType(SOUP_BUTTON_TEXT)}>
+            {SOUP_BUTTON_TEXT}
+          </Chip>
+          <Chip onPress={() => filterFoodByType(SANDWICH_BUTTON_TEXT)}>
+            {SANDWICH_BUTTON_TEXT}
+          </Chip>
         </Stretcher>
       </Padder>
       <FoodList

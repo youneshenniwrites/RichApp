@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList as NPMPackagesList } from 'react-native';
 
 import { Searchbar, Button } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import uuid from 'react-native-uuid';
 
+import { Loader } from './Loader';
 import { RooState, searchLibraries } from '../store';
 import { Container, Divider, Label, Padder } from '../styles';
-import { Loader } from './Loader';
 import { SEARCH_BUTTON_TEXT, NPM_SEARCH_PLACEHOLDER } from '../constants';
 
 export const ResultsList = (): JSX.Element => {
@@ -42,11 +42,10 @@ export const ResultsList = (): JSX.Element => {
           {SEARCH_BUTTON_TEXT}
         </Button>
       </Padder>
-
       {error && <Label>{error}</Label>}
       {loading && <Loader />}
       {!error && !loading && (
-        <FlatList
+        <NPMPackagesList
           data={data}
           keyExtractor={() => uuid.v4().toString()}
           contentContainerStyle={{ alignItems: 'center' }}
