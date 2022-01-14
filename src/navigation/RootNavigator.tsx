@@ -10,6 +10,8 @@ import {
   FOOD_SCREEN_NAME,
   ICON_ROUTE_ONE,
   ICON_ROUTE_TWO,
+  COLOR_ACTIVE_ROUTE,
+  COLOR_INACTIVE_ROUTE,
 } from '../constants';
 
 const Tab = createBottomTabNavigator();
@@ -29,8 +31,8 @@ export const RootNavigator = () => {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'tomato',
-          tabBarInactiveTintColor: 'gray',
+          tabBarActiveTintColor: COLOR_ACTIVE_ROUTE,
+          tabBarInactiveTintColor: COLOR_INACTIVE_ROUTE,
           headerShown: false,
         })}
       >
