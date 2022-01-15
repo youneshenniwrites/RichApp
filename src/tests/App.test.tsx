@@ -41,7 +41,7 @@ describe('Testing the <ResultsList /> component', () => {
     getByText(/find packages/i);
   });
 
-  //* 2 - Testing for expected search and API response behaviour
+  //* 2 - Testing for expected search behaviour and API response
 
   it('Renders one package with the name "java" in it', async () => {
     const { getByPlaceholderText, findAllByText, getByText } =
@@ -58,18 +58,18 @@ describe('Testing the <ResultsList /> component', () => {
     expect(items).toHaveLength(1);
   });
 
-  it('Renders several packages with the name "react" in them', async () => {
+  it('Renders several packages with the name "python" in them', async () => {
     const { getByPlaceholderText, findAllByText, getByText } =
       render(component);
 
     const textInput = getByPlaceholderText(/search a package/i);
     const searchButton = getByText(/find packages/i);
-    const inputText = 'react';
+    const inputText = 'python';
 
     fireEvent.changeText(textInput, inputText);
     fireEvent.press(searchButton);
 
-    const items = await findAllByText(/react/i, { exact: false });
-    expect(items).toHaveLength(9);
+    const items = await findAllByText(/python/i, { exact: false });
+    expect(items).toHaveLength(5);
   });
 });
