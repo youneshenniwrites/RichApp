@@ -1,6 +1,6 @@
 name: Run test suite
 
-on: [pull_request]
+on: [push]
 
 jobs:
   build:
@@ -12,15 +12,12 @@ jobs:
         node-version: [17.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
-      - uses: actions/setup-node@master
-      - uses: c-hive/gha-yarn-cache@v1
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install node modules
+      - name: install node modules and run tests
         run: |
           yarn install
-      - name: Run test
-        run: |
           yarn test
