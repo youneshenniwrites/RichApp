@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Provider as Redux } from 'react-redux';
 import { render, fireEvent } from '@testing-library/react-native';
-// import '@testing-library/jest-native/extend-expect';
 
 import { store } from '../store';
 import { ResultsList } from '../components';
@@ -42,18 +41,24 @@ describe('Testing the <ResultsList /> component', () => {
     getByText(/find packages/i);
   });
 
-  // TODO: we stopped here!!!
+  //* 2 - Testing for expected search and API response behaviour
 
-  //* 2 - Test for expected behaviour during API call
+  it('Renders 20 items after typing a package name and pressing the search button', async () => {
+    // TODO
+  });
 
-  it('Renders 20 items after typing a package name and pressing the search button', () => {
-    const { getByPlaceholderText, getAllByRole, getByText } = render(component);
+  it('Renders 20 items when searching "java" but only one with the name "java"', async () => {
+    const { getByPlaceholderText, findAllByText, getByText } =
+      render(component);
 
     const textInput = getByPlaceholderText(/search a package/i);
     const searchButton = getByText(/find packages/i);
-    const createdItemText = 'python';
+    const inputText = 'java';
 
-    fireEvent.changeText(textInput, createdItemText);
+    fireEvent.changeText(textInput, inputText);
     fireEvent.press(searchButton);
+
+    const items = await findAllByText(inputText);
+    expect(items.length).toBe(1);
   });
 });
