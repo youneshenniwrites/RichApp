@@ -7,7 +7,7 @@ import uuid from 'react-native-uuid';
 
 import { Loader } from './Loader';
 import { RooState, searchLibraries } from '../store';
-import { Container, Label, Padder } from '../styles';
+import { Centerer, Container, Label, Padder } from '../styles';
 import { SEARCH_BUTTON_TEXT, NPM_SEARCH_PLACEHOLDER } from '../constants';
 import { ResultsItem } from './ResultsItem';
 
@@ -43,8 +43,10 @@ export const ResultsList = (): JSX.Element => {
           {SEARCH_BUTTON_TEXT}
         </Button>
       </Padder>
-      {error && <Label>{error}</Label>}
-      {loading && <Loader />}
+      <Centerer>
+        {error && <Label>{error}</Label>}
+        {loading && <Loader />}
+      </Centerer>
       {!error && !loading && (
         <NPMPackagesList
           data={data}
