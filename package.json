@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "test": "jest --watch --coverage=false --changedSince=origin/master"
+    "test": "jest --coverage=true",
+    "test -w": "jest --watch --coverage=false --changedSince=origin/master"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.0.9",
