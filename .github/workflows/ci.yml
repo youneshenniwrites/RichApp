@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, windows-latest]
+        os: [macos-latest]
         node-version: [17.x]
 
     steps:
@@ -17,7 +17,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install node modules and run tests
+      - name: install node modules
         run: |
           yarn install
+      - name: run tests
+        run: |
           yarn test
